@@ -1,0 +1,62 @@
+/* Custom styles for MainLayout */
+
+/* Menu item hover effect */
+.ant-menu-item:hover {
+  color: rgb(255, 160, 90) !important;
+}
+
+.ant-menu-item:hover .ant-menu-title-content a {
+  color: rgb(255, 160, 90) !important;
+}
+
+.ant-menu-item:hover .anticon {
+  color: rgb(255, 160, 90) !important;
+}
+
+/* Mobile menu hover effect */
+.ant-drawer .ant-menu-item:hover {
+  color: rgb(255, 160, 90) !important;
+}
+
+.ant-drawer .ant-menu-item:hover .ant-menu-title-content a {
+  color: rgb(255, 160, 90) !important;
+}
+
+.ant-drawer .ant-menu-item:hover .anticon {
+  color: rgb(255, 160, 90) !important;
+}
+
+/* Selected menu item */
+.ant-menu-item-selected {
+  color: rgb(255, 160, 90) !important;
+  background-color: rgba(255, 160, 90, 0.1) !important;
+}
+
+.ant-menu-item-selected .ant-menu-title-content a {
+  color: rgb(255, 160, 90) !important;
+}
+
+.ant-menu-item-selected .anticon {
+  color: rgb(255, 160, 90) !important;
+}
+
+/* Login button with stronger color */
+.login-button {
+  background-color: rgba(255, 160, 90, 0.2) !important;
+  color: rgb(255, 160, 90) !important;
+  border-color: transparent !important;
+  transition: all 0.3s ease !important;
+}
+
+.login-button:hover {
+  color: rgb(255, 160, 90) !important;
+  border-color: transparent !important;
+  background-color: rgba(255, 160, 90, 0.3) !important;
+}
+
+.login-button:focus {
+  background-color: rgba(255, 160, 90, 0.2) !important;
+  color: rgb(255, 160, 90) !important;
+  border-color: transparent !important;
+  outline: none !important;
+}

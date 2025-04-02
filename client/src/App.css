@@ -1,21 +1,132 @@
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  width: 100%;
+  height: 100vh;
 }
 
+/* App-wide styles */
 .app-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Card styles */
+.card {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+/* Home container */
+.home-container {
+  min-height: calc(100vh - 64px); /* Account for header height */
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* Card animations and styles */
+.action-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 100%;
+}
+
+.action-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive text */
+@media (max-width: 768px) {
+  .ant-typography {
+    text-align: center;
+  }
+
+  .ant-card-body {
+    padding: 16px;
+  }
+}
+
+.ant-card {
+  background: #fff;
+}
+
+.ant-card-body {
+  position: relative;
+  z-index: 1;
+}
+
+/* Better spacing for mobile */
+@media (max-width: 576px) {
+  .home-container {
+    padding: 20px 16px;
+  }
+
+  .ant-space {
+    gap: 16px !important;
+  }
+
+  .ant-card {
+    margin-bottom: 16px;
+  }
+}
+
+.ant-typography {
+  position: relative;
+  z-index: 1;
+}
+
+/* Card content spacing */
+.ant-card-body {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  gap: 16px;
 }
 
-.card {
-  padding: 2em;
+.ant-row .ant-col .ant-card {
+  height: 100%;
 }
 
-.read-the-docs {
-  color: #888;
+/* Gradient backgrounds */
+.gradient-primary {
+  background: linear-gradient(
+    135deg,
+    var(--primary-color) 0%,
+    var(--success-color) 100%
+  );
+}
+
+.gradient-secondary {
+  background: linear-gradient(
+    135deg,
+    var(--warning-color) 0%,
+    var(--error-color) 100%
+  );
+}
+
+/* Fix for Ant Design layout issues */
+.ant-layout {
+  background: transparent;
+}
+
+.ant-layout-content {
+  overflow: auto;
+}
+
+/* Fix for mobile layout */
+@media (max-width: 576px) {
+  .ant-layout-content {
+    padding: 16px !important;
+  }
+
+  .ant-card-body {
+    padding: 16px !important;
+  }
+
+  .ant-space {
+    width: 100% !important;
+  }
+
+  .ant-space-item {
+    width: 100% !important;
+  }
 }
