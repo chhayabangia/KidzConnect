@@ -7,8 +7,8 @@ interface DaycareFormData {
   address: string;
   city: string;
   zip: string;
-  totalSeats: string; // kept as string for input field
-  services: string;   // comma-separated string from input
+  totalSeats: string; 
+  services: string;  
 }
 
 const DaycareForm: React.FC = () => {
