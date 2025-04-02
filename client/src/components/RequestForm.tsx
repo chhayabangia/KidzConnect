@@ -1,46 +1,26 @@
 import React, { useState, ChangeEvent, FormEvent } from 'react';
-import { useMutation } from '@apollo/client';
-import { CREATE_ENROLLMENT_REQUEST } from '../utils/mutations';
+import axios from 'axios';
 
-interface RequestFormProps {
-  daycareId: string; // required to attach request to a daycare
+interface Props {
+  daycareId: string;
 }
 
-interface FormData {
-  childName: string;
-  age: string; // string to match input field
-  notes?: string;
-}
-
-const RequestForm: React.FC<RequestFormProps> = ({ daycareId }) => {
-  const [formState, setFormState] = useState<FormData>({
-    childName: '',
-    age: '',
-    notes: '',
-  });
-
-  const [createRequest, { error }] = useMutation(CREATE_ENROLLMENT_REQUEST);
+const RequestForm: React.FC<Props> = ({ daycareId }) => {
+  const [form, setForm] = useState({ childName: '', age: '', notes: '' });
 
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormState((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
+    setForm({ ...form, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     try {
-      await createRequest({
-        variables: {
-          ...formState,
-          age: parseInt(formState.age),
-          daycareId,
-        },
+      await axios.post(`/api/daycares/${daycareId}/requests`, {
+        childName: form.childName,
+        age: parseInt(form.age),
+        notes: form.notes,
       });
-      alert('Request submitted successfully!');
-      setFormState({ childName: '', age: '', notes: '' });
+      alert('Request sent!');
     } catch (err) {
       console.error(err);
     }
@@ -48,33 +28,10 @@ const RequestForm: React.FC<RequestFormProps> = ({ daycareId }) => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <h2>Request a Seat</h2>
-      <input
-        name="childName"
-        value={formState.childName}
-        placeholder="Child's Full Name"
-        onChange={handleChange}
-        required
-      />
-      <input
-        name="age"
-        value={formState.age}
-        type="number"
-        placeholder="Age"
-        onChange={handleChange}
-        required
-      />
-      <textarea
-        name="notes"
-        value={formState.notes}
-        placeholder="Additional notes (optional)"
-        onChange={handleChange}
-        rows={4}
-      />
-      <button type="submit">Send Request</button>
-      {error && <p style={{ color: 'red' }}>Something went wrong. Try again.</p>}
+      <input name="childName" onChange={handleChange} />
+      <input name="age" onChange={handleChange} />
+      <textarea name="notes" onChange={handleChange} />
+      <button type="submit">Request Seat</button>
     </form>
   );
 };
-
-export default RequestForm;
