@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Vite Logo</title>
+    <defs>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#41D1FF" offset="0%"></stop>
+            <stop stop-color="#BD34FE" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="vite-logo" fill="url(#linearGradient-1)" fill-rule="nonzero">
+            <path d="M29.8836,6.45L16.0641,29.4334C15.8023,29.8754 15.1643,29.8734 14.9045,29.4294L1.1344,6.45C0.8466,5.9654 1.2466,5.3654 1.8164,5.4414L15.5125,7.8254C15.5845,7.8374 15.6585,7.8374 15.7305,7.8254L29.2016,5.4414C29.7714,5.3634 30.1734,5.9654 29.8836,6.45Z" id="Path"></path>
+        </g>
+    </g>
+</svg>
