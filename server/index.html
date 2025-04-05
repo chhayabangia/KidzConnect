@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Google Maps API Example</title>
+</head>
+<body>
+  <h1>Daycares near you</h1>
+
+  <div id="results"></div>
+
+  <script>
+    
+    const latitude = 40.730610;
+    const longitude = -73.935242;
+    const apiKey = 'AIzaSyDkx7a4MMD0tkjmaOZxdMLb_6JAPBp7_nQ'; 
+
+    
+    const endpoint = `https://maps.googleapis.com/maps/api/place/textsearch/json?query=daycares+near+${latitude},${longitude}&key=${apiKey}`;
+
+    
+    fetch(endpoint)
+      .then(response => response.json())
+      .then(data => {
+        
+        const results = data.results;
+        const resultsContainer = document.getElementById('results');
+        
+        
+        results.forEach(place => {
+          const placeElement = document.createElement('div');
+          placeElement.innerHTML = `
+            <h3>${place.name}</h3>
+            <p>${place.formatted_address}</p>
+          `;
+          resultsContainer.appendChild(placeElement);
+        });
+      })
+      .catch(error => {
+        console.error('Error fetching data:', error);
+      });
+  </script>
+</body>
+</html>

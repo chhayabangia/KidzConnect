@@ -2,7 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 
 const app = express();
-app.use(express.json()); // For parsing JSON
+app.use(express.json()); 
 
 mongoose.connect("mongodb://localhost:27017/mydaycare", {
   useNewUrlParser: true,

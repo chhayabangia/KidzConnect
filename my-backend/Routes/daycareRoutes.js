@@ -1,4 +1,4 @@
-const Daycare = require("./models/Daycare");
+const Daycare = require("../models/Daycare");
 
 
 app.post("/daycares", async (req, res) => {
