@@ -56,10 +56,10 @@ The KidzConnect is a full stack MERN application designed for parents and daycar
 
 ---
 ## **Contributers**
-* Tammy @TroubleMonkey
-* Alfonso
-* Chhaya Bangia @chhayabangia
-* Krystal @
+* Tamara @TroubleMonkey0322
+* Alfonso @Alfonso1Lorensna
+* Chhaya  @chhayabangia
+* Krystal @LilmissKryss
 ---
   ## **License**
   This project is licensed under the MIT License. 
