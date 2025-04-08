@@ -9,9 +9,6 @@ The KidzConnect is a full stack MERN application designed for parents and daycar
 * **Parents:** Allows parents to register and login securely, Browse available daycare listings and apply to daycares.
 * **Providers:** Secure Login with provider role, access dashoboard to manage application, view parents requests (admin interface planned)
 * **Auth and Security:** Role-based authentication using JWT, Protected Routes (e.g. provider dashboard), MongoURI and secrets hideen via '.env'
-* **Personalized Thank-You Page:** Displays sponsored children based on the sponsors preferences.
-* **Countdown Timer:** Real-time countdown to Christmas.
-* **Accessibility Features:** Includes semantic HTML and ARIA attributes.
 
 ## **Technologies Used**
 * **React:**  
