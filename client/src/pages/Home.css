@@ -1,0 +1,29 @@
+/* Styles for Home page */
+
+/* Clickable card styles */
+.action-card {
+  transition: all 0.3s ease;
+}
+
+.action-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+}
+
+/* Button hover effect inside clickable card */
+.action-card:hover .ant-btn-primary {
+  background-color: var(--primary-color-hover);
+  border-color: var(--primary-color-hover);
+}
+
+/* Ensure the entire card is clickable */
+.action-card .ant-card-body {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Make the button take up the remaining space at the bottom */
+.action-card .ant-btn {
+  margin-top: auto;
+}
