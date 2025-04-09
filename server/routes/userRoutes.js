@@ -53,3 +53,9 @@ router.post('/login', login);  // Define the login route
 
 module.exports = router;
 //button;
+
+router.get('/', (req, res) => {
+  res.send('Users route');
+});
+
+module.exports = router; 

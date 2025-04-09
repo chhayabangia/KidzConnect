@@ -1,16 +1,33 @@
-const express = require("express");
-const mongoose = require("mongoose");
+require('dotenv').config();
+const express = require('express');
+const mongoose = require('mongoose');
 
 const app = express();
-app.use(express.json()); 
+const port = process.env.PORT || 3000;
 
-mongoose.connect("mongodb://localhost:27017/mydaycare", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
+// Middleware to parse JSON
+app.use(express.json());
+
+// Basic route
+app.get('/', (req, res) => {
+  res.send('KidzConnect API');
 });
 
-const db = mongoose.connection;
-db.on("error", console.error.bind(console, "MongoDB connection error:"));
-db.once("open", () => console.log("Connected to MongoDB"));
+// Start the server
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
+});
 
-app.listen(3000, () => console.log("Server running on port 3000"));
+// Connect to MongoDB
+mongoose.connect(process.env.MONGO_URI, {
+})
+.then(() => console.log('MongoDB connected successfully'))
+.catch(err => console.error('MongoDB connection error:', err));
+
+// Routes
+const userRoutes = require('../server/routes/userRoutes');
+
+app.use('/api/users', userRoutes);
+
+const userRoutes = require('./routes/users');
+app.use('/users', userRoutes); 

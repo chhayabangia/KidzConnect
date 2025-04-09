@@ -1,18 +1,56 @@
-const Daycare = require("../models/Daycare");
+// routes/daycareRoutes.js
+const express = require('express');
+const Daycare = require('../models/Daycare');
+const router = express.Router();
 
-
-app.post("/daycares", async (req, res) => {
+// Create a new daycare (POST)
+router.post('/daycares', async (req, res) => {
   try {
-    const daycare = new Daycare(req.body);
-    const saved = await daycare.save();
-    res.status(201).json(saved);
-  } catch (err) {
-    res.status(400).json({ error: err.message });
+    const { name, location, services, contact } = req.body;
+    const newDaycare = new Daycare({ name, location, services, contact });
+    await newDaycare.save();
+    res.status(201).json(newDaycare);
+  } catch (error) {
+    res.status(400).json({ message: error.message });
   }
 });
 
+module.exports = router;
 
-app.get("/daycares", async (req, res) => {
-  const daycares = await Daycare.find();
-  res.json(daycares);
+// Get a single daycare by ID (GET)
+router.get('/daycares/:id', async (req, res) => {
+  try {
+    const daycare = await Daycare.findById(req.params.id);
+    if (!daycare) {
+      return res.status(404).json({ message: 'Daycare not found' });
+    }
+    res.json(daycare);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+// Update a daycare (PUT)
+router.put('/daycares/:id', async (req, res) => {
+  try {
+    const updatedDaycare = await Daycare.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    if (!updatedDaycare) {
+      return res.status(404).json({ message: 'Daycare not found' });
+    }
+    res.json(updatedDaycare);
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+});
+
+// Delete a daycare (DELETE)
+router.delete('/daycares/:id', async (req, res) => {
+  try {
+    const deletedDaycare = await Daycare.findByIdAndDelete(req.params.id);
+    if (!deletedDaycare) {
+      return res.status(404).json({ message: 'Daycare not found' });
+    }
+    res.json({ message: 'Daycare deleted successfully' });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
 });
