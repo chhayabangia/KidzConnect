@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const User = require("../models/User");
+const User = require("../../models/User");
 // Alfonso's code
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
@@ -53,3 +53,9 @@ router.post('/login', login);  // Define the login route
 
 module.exports = router;
 //button;
+
+router.get('/', (req, res) => {
+  res.send('Users route');
+});
+
+module.exports = router; 
