@@ -1,10 +1,10 @@
 // routes/daycareRoutes.js
 const express = require('express');
-const Daycare = require('../models/Daycare');
+const Daycare = require('../../models/Daycare');
 const router = express.Router();
 
 // Create a new daycare (POST)
-router.post('/daycares', async (req, res) => {
+router.post('/', async (req, res) => {
   try {
     const { name, location, services, contact } = req.body;
     const newDaycare = new Daycare({ name, location, services, contact });
@@ -18,7 +18,7 @@ router.post('/daycares', async (req, res) => {
 module.exports = router;
 
 // Get a single daycare by ID (GET)
-router.get('/daycares/:id', async (req, res) => {
+router.get('/:id', async (req, res) => {
   try {
     const daycare = await Daycare.findById(req.params.id);
     if (!daycare) {
@@ -30,7 +30,7 @@ router.get('/daycares/:id', async (req, res) => {
   }
 });
 // Update a daycare (PUT)
-router.put('/daycares/:id', async (req, res) => {
+router.put('/:id', async (req, res) => {
   try {
     const updatedDaycare = await Daycare.findByIdAndUpdate(req.params.id, req.body, { new: true });
     if (!updatedDaycare) {
@@ -43,7 +43,7 @@ router.put('/daycares/:id', async (req, res) => {
 });
 
 // Delete a daycare (DELETE)
-router.delete('/daycares/:id', async (req, res) => {
+router.delete('/:id', async (req, res) => {
   try {
     const deletedDaycare = await Daycare.findByIdAndDelete(req.params.id);
     if (!deletedDaycare) {
