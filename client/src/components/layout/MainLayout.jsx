@@ -19,7 +19,7 @@ const MainLayout = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const screens = useBreakpoint();
-  
+
   // Determine if we're on a mobile device
   const isMobile = !screens.md;
 
@@ -57,18 +57,12 @@ const MainLayout = () => {
   ];
 
   // Combine menu items based on login status
-  const menuItems = isLoggedIn 
+  const menuItems = isLoggedIn
     ? [...publicMenuItems, ...privateMenuItems]
     : publicMenuItems;
 
   return (
-    <Layout
-      style={{
-        minHeight: "100vh",
-        background: "#87CEEB",
-        paddingBottom: "24px",
-      }}
-    >
+    <Layout style={{ minHeight: "100vh", background: "#87CEEB" }}>
       <Header
         style={{
           padding: "0",
@@ -186,29 +180,24 @@ const MainLayout = () => {
           )}
         </div>
       </Header>
-      <Layout style={{ overflow: "hidden" }}>
+      <Layout>
         {!isMobile && (
           <Sider
             width={200}
             style={{
               background: "#fff",
               boxShadow: "2px 0 8px rgba(0,0,0,0.1)",
-              marginTop: "24px", // Match the top padding of the main content
-              marginBottom: "48px", // Add space at the bottom of sidebar
-              borderRadius: "0 16px 16px 0", // Rounded top-right and bottom-right corners
-              overflow: "hidden",
-              height: "calc(100% - 72px)", // Adjust height to account for top and bottom margins
+              marginTop: "10px", // Add space between header and sidebar
             }}
           >
             <Menu
               mode="inline"
               selectedKeys={[location.pathname]}
               style={{
-                height: "calc(100% - 48px)", // Adjust height to account for bottom margin
+                height: "100%",
                 borderRight: 0,
                 background: "#fff",
                 paddingTop: "15px", // Add padding to the top of the menu
-                paddingBottom: "15px", // Add padding to the bottom of the menu
               }}
               items={menuItems}
             />
@@ -216,12 +205,9 @@ const MainLayout = () => {
         )}
         <Layout
           style={{
-            padding: isMobile ? "16px 16px 32px 16px" : "24px 24px 48px 24px",
+            padding: isMobile ? "16px" : "24px",
             background: "linear-gradient(180deg, #87CEEB 0%, #90EE90 100%)",
             position: "relative",
-            height: "calc(100% - 24px)", // Match height with main layout
-            borderRadius: "0 0 16px 16px", // Rounded bottom corners
-            marginBottom: "24px", // Space at the bottom
           }}
         >
           {/* No decorations */}

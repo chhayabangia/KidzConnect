@@ -1,10 +1,8 @@
 import React, { lazy } from "react";
 import MainLayout from "./components/layout/MainLayout";
 
+// Lazy load pages for better performance
 const Home = lazy(() => import("./pages/Home"));
-const Search = lazy(() => import("./pages/Search"));
-const Enrollments = lazy(() => import("./pages/Enrollments"));
-const ProviderDashboard = lazy(() => import("./pages/ProviderDashboard"));
 
 // Define routes
 export const routes = [
@@ -13,9 +11,9 @@ export const routes = [
     element: <MainLayout />,
     children: [
       { index: true, element: <Home /> },
-      { path: "search", element: <Search /> },
-      { path: "provider", element: <ProviderDashboard /> },
-      { path: "enrollments", element: <Enrollments /> },
+      { path: "search", element: <div>Search Page</div> },
+      { path: "provider", element: <div>Provider Dashboard</div> },
+      { path: "enrollments", element: <div>Enrollments</div> },
       { path: "profile", element: <div>Profile Page</div> },
       { path: "*", element: <div>Page Not Found</div> },
     ],
