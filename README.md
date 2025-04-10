@@ -49,6 +49,7 @@ The KidzConnect is a full stack MERN application designed for parents and daycar
 * Messaging between parents and providers
 * Booking Calendar for appointments
 * Admin dashboard
+* Can make the features with Python
 
 ## Deployment: 
 * Frontend (Render Static Site)
@@ -57,7 +58,7 @@ The KidzConnect is a full stack MERN application designed for parents and daycar
 ---
 ## **Contributers**
 * Tamara @TroubleMonkey0322
-* Alfonso @Alfonso1Lorensna
+* Alfonso @Alfonso1Lorenzana
 * Chhaya  @chhayabangia
 * Krystal @LilmissKryss
 ---
