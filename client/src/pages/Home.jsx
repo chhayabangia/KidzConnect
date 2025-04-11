@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Card, Row, Col, Button, Typography, Space, Grid } from "antd";
 import { SearchOutlined, FormOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
@@ -317,8 +317,8 @@ const Home = () => {
         >
           <Title level={3}>Ready to get started?</Title>
           <Paragraph>
-            Join KidzConnect today and find the perfect match for your
-            childcare needs.
+            Join KidzConnect today and find the perfect match for your childcare
+            needs.
           </Paragraph>
           <Button
             type="primary"

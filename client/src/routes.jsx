@@ -1,6 +1,7 @@
 import React, { lazy } from "react";
 import MainLayout from "./components/layout/MainLayout";
 
+// Lazy load pages for better performance
 const Home = lazy(() => import("./pages/Home"));
 const Search = lazy(() => import("./pages/Search"));
 

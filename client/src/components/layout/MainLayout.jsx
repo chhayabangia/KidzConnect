@@ -224,7 +224,6 @@ const MainLayout = () => {
             marginBottom: "24px", // Space at the bottom
           }}
         >
-          {/* No decorations */}
           <Content
             style={{
               background: "#fff",
