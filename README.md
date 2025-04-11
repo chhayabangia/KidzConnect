@@ -64,3 +64,6 @@ The KidzConnect is a full stack MERN application designed for parents and daycar
 ---
   ## **License**
   This project is licensed under the MIT License. 
+
+  ## **Deployment URL**
+  https://kidzconnect-frontend.onrender.com/
