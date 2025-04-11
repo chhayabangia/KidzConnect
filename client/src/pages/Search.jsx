@@ -42,6 +42,10 @@ const Search = () => {
     fetchDaycares();
   }, []);
 
+  // API URL from environment variable
+  const apiUrl = import.meta.env.VITE_API_URL || "http://localhost:4000";
+  console.log("Using API URL:", apiUrl);
+
   // Fetch daycares from the GraphQL API
   const fetchDaycares = async () => {
     setLoading(true);

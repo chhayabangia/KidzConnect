@@ -12,14 +12,26 @@ const port = process.env.PORT || 4000;
 // Middleware
 app.use(
   cors({
-    origin: ["http://localhost:3000", "http://localhost:5173"],
+    origin: [
+      "http://localhost:3000",
+      "http://localhost:5173",
+      "https://kidzconnect.onrender.com",
+    ],
     credentials: true,
   })
 );
 
 // Only use one JSON parser to avoid conflicts
 app.use(express.json());
-app.use(express.static("../client/dist"));
+
+// Serve static files from the React app
+const path = require("path");
+const clientBuildPath =
+  process.env.NODE_ENV === "production"
+    ? path.join(__dirname, "../client/dist")
+    : "../client/dist";
+
+app.use(express.static(clientBuildPath));
 
 // Basic route
 app.get("/", (req, res) => {
@@ -73,6 +85,11 @@ async function startApolloServer() {
   // Add a route to test the GraphQL server
   app.get("/test-graphql", (req, res) => {
     res.json({ message: "GraphQL server is running" });
+  });
+
+  // Catch-all route to serve the React app
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(clientBuildPath, "index.html"));
   });
 
   // Start server
