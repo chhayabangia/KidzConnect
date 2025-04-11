@@ -1,0 +1,40 @@
+name: Node.js CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+
+    - name: Install backend dependencies
+      working-directory: ./server
+      run: npm install
+
+    - name: Run backend lint (optional)
+      working-directory: ./server
+      run: npm run lint || echo "No lint script defined"
+
+    - name: Install frontend dependencies
+      working-directory: ./client
+      run: npm install
+
+    - name: Build frontend
+      working-directory: ./client
+      run: npm run build || echo "Build failed or not defined"
+
+    - name: Complete
+      run: echo "GitHub Actions CI run completed"

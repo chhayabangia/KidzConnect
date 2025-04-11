@@ -1,0 +1,21 @@
+{
+  "name": "kidzconnect",
+  "version": "1.0.0",
+  "description": "KidzConnect application",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server/server.js",
+    "dev": "cd server && npm run dev",
+    "install-server": "cd server && npm install",
+    "install-client": "cd client && npm install",
+    "install": "npm run install-server && npm run install-client",
+    "build-client": "cd client && npm run build",
+    "heroku-postbuild": "npm run install-client && npm run build-client"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

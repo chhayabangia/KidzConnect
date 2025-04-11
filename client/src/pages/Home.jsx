@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Card, Row, Col, Button, Typography, Space, Grid } from "antd";
 import { SearchOutlined, FormOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
@@ -12,6 +12,7 @@ const Home = () => {
 
   // Determine if on a mobile device
   const isMobile = !screens.md;
+  const [hovered, setHovered] = useState(false);
 
   return (
     <div
@@ -73,14 +74,16 @@ const Home = () => {
                 height: "100%",
                 background: "#fff",
                 borderRadius: "16px",
-                overflow: "hidden",
+                transition: "transform 0.3s ease",
               }}
+              onMouseEnter={() => setHovered(true)}
+              onMouseLeave={() => setHovered(false)}
               cover={
                 <div
                   style={{
                     height: isMobile ? 140 : 180,
                     background:
-                      "linear-gradient(135deg, var(--primary-color) 0%, var(--success-color) 100%)",
+                      "linear-gradient(135deg, #52c41a 0%, #237804 100%)",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
@@ -107,6 +110,10 @@ const Home = () => {
                 information about their services.
               </Paragraph>
               <Button
+                style={{
+                  background: "linear-gradient(135deg, #52c41a, #237804)",
+                  border: "none",
+                }}
                 type="primary"
                 size="large"
                 icon={<SearchOutlined />}
@@ -127,14 +134,14 @@ const Home = () => {
                 height: "100%",
                 background: "#fff",
                 borderRadius: "16px",
-                overflow: "hidden",
+                transition: "transform 0.3s ease",
               }}
               cover={
                 <div
                   style={{
                     height: isMobile ? 140 : 180,
                     background:
-                      "linear-gradient(135deg, var(--warning-color) 0%, var(--error-color) 100%)",
+                      "linear-gradient(135deg, #faad14 0%, #f5222d 100%)",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
@@ -190,6 +197,7 @@ const Home = () => {
           <img
             src="/images/daycare-kids.jpg"
             alt="Happy children at daycare"
+            loading="lazy"
             style={{
               width: "100%",
               height: "auto",
@@ -295,6 +303,31 @@ const Home = () => {
               </Col>
             ))}
           </Row>
+        </div>
+
+        {/* CTA Footer Section */}
+        <div
+          style={{
+            textAlign: "center",
+            padding: isMobile ? "24px 16px" : "48px",
+            background: "#f0f2f5",
+            borderRadius: "16px",
+            marginTop: 48,
+          }}
+        >
+          <Title level={3}>Ready to get started?</Title>
+          <Paragraph>
+            Join KidzConnect today and find the perfect match for your childcare
+            needs.
+          </Paragraph>
+          <Button
+            type="primary"
+            size="large"
+            onClick={() => navigate("/register")}
+            style={{ marginTop: 16 }}
+          >
+            Register Now
+          </Button>
         </div>
       </Space>
     </div>

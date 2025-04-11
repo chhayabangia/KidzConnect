@@ -20,7 +20,7 @@ const MainLayout = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const screens = useBreakpoint();
 
-  // Determine if we're on a mobile device
+  // Determine if on a mobile device
   const isMobile = !screens.md;
 
   // Public menu items (always visible)
@@ -62,7 +62,13 @@ const MainLayout = () => {
     : publicMenuItems;
 
   return (
-    <Layout style={{ minHeight: "100vh", background: "#87CEEB" }}>
+    <Layout
+      style={{
+        minHeight: "100vh",
+        background: "#87CEEB",
+        paddingBottom: "24px",
+      }}
+    >
       <Header
         style={{
           padding: "0",
@@ -73,7 +79,7 @@ const MainLayout = () => {
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
-          height: isMobile ? "70px" : "80px", // Balanced height for navbar
+          height: isMobile ? "70px" : "80px",
         }}
       >
         <div
@@ -83,7 +89,7 @@ const MainLayout = () => {
             alignItems: "center",
             height: "100%",
             width: isMobile ? "80%" : "100%",
-            justifyContent: "flex-start", // Ensure proper alignment
+            justifyContent: "flex-start",
           }}
         >
           <div
@@ -125,7 +131,7 @@ const MainLayout = () => {
                   fontSize: isMobile ? "24px" : "32px",
                   fontFamily: "'Comic Sans MS', sans-serif",
                   fontWeight: "bold",
-                  lineHeight: "1.2", // Improve line height for better spacing
+                  lineHeight: "1.2",
                 }}
               >
                 KidzConnect
@@ -137,7 +143,7 @@ const MainLayout = () => {
                     color: "#666",
                     textTransform: "uppercase",
                     letterSpacing: "1px",
-                    marginTop: "-2px", // Reduce space between logo and subtitle
+                    marginTop: "-2px",
                     lineHeight: "1",
                   }}
                 >
@@ -180,24 +186,29 @@ const MainLayout = () => {
           )}
         </div>
       </Header>
-      <Layout>
+      <Layout style={{ overflow: "hidden" }}>
         {!isMobile && (
           <Sider
             width={200}
             style={{
               background: "#fff",
               boxShadow: "2px 0 8px rgba(0,0,0,0.1)",
-              marginTop: "10px", // Add space between header and sidebar
+              marginTop: "24px", // Match the top padding of the main content
+              marginBottom: "48px",
+              borderRadius: "0 16px 16px 0", // Rounded top-right and bottom-right corners
+              overflow: "hidden",
+              height: "calc(100% - 72px)",
             }}
           >
             <Menu
               mode="inline"
               selectedKeys={[location.pathname]}
               style={{
-                height: "100%",
+                height: "calc(100% - 48px)",
                 borderRight: 0,
                 background: "#fff",
-                paddingTop: "15px", // Add padding to the top of the menu
+                paddingTop: "15px",
+                paddingBottom: "15px",
               }}
               items={menuItems}
             />
@@ -205,12 +216,14 @@ const MainLayout = () => {
         )}
         <Layout
           style={{
-            padding: isMobile ? "16px" : "24px",
+            padding: isMobile ? "16px 16px 32px 16px" : "24px 24px 48px 24px",
             background: "linear-gradient(180deg, #87CEEB 0%, #90EE90 100%)",
             position: "relative",
+            height: "calc(100% - 24px)", // Match height with main layout
+            borderRadius: "0 0 16px 16px",
+            marginBottom: "24px", // Space at the bottom
           }}
         >
-          {/* No decorations */}
           <Content
             style={{
               background: "#fff",
