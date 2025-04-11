@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: kidzconnect-api
+    env: node
+    buildCommand: npm run install-server
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+    healthCheckPath: /test-graphql
+
+  - type: web
+    name: kidzconnect-client
+    env: static
+    buildCommand: npm run install-client && npm run build-client
+    staticPublishPath: ./client/dist
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
+    envVars:
+      - key: NODE_ENV
+        value: production
